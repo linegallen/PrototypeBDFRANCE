@@ -1,0 +1,764 @@
+/* BD France - Prototype
+   Custom styles layered on top of the vendored DSFR (dsfr.min.css).
+   Only rules that DSFR does not already provide live here: section
+   backgrounds/spacing, decorative vectors, and the pack-card colour
+   variants used in the "Packs thématiques" grid. */
+
+:root {
+  --bdf-blue-france: #000091;
+  --bdf-text-inverted-blue: #f5f5fe;
+  --bdf-title-grey: #161616;
+  --bdf-text-grey: #3a3a3a;
+  --bdf-mention-grey: #666666;
+  --bdf-border-grey: #dddddd;
+  --bdf-bg-alt-blue: #f5f5fe;
+  --bdf-bg-hover-blue: #c1c1fb;
+  --bdf-bg-alt-grey: #f6f6f6;
+  --bdf-bg-contrast-info: #e8edff;
+  --bdf-green: #18753c;
+  --bdf-orange: #b34000;
+  --bdf-red: #ce0500;
+  --bdf-yellow: #b18a26;
+  --bdf-pink: #b60478;
+  --bdf-grey-icon: #3a3a3a;
+}
+
+/* ---------- Icon masks ----------
+   The vendored dsfr.min.css only ships the fr-icon--sm/md/lg/xs size
+   helpers; per-icon mask-image rules normally live in DSFR's separate
+   utility/icons stylesheet, which isn't vendored here. Define the mask
+   for each fr-icon-* class actually used on this page. */
+.fr-icon-arrow-right-line:before,
+.fr-icon-arrow-right-line:after,
+.fr-icon-building-4-line:before,
+.fr-icon-building-4-line:after,
+.fr-icon-contrast-drop-2-line:before,
+.fr-icon-contrast-drop-2-line:after,
+.fr-icon-chat-quote-line:before,
+.fr-icon-chat-quote-line:after,
+.fr-icon-external-link-line:before,
+.fr-icon-external-link-line:after,
+.fr-icon-hexagon-line:before,
+.fr-icon-hexagon-line:after,
+.fr-icon-line-chart-line:before,
+.fr-icon-line-chart-line:after,
+.fr-icon-seedling-line:before,
+.fr-icon-seedling-line:after {
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.fr-icon-arrow-right-line:before, .fr-icon-arrow-right-line:after {
+  -webkit-mask-image: url(../vendor/dsfr/icons/arrows/arrow-right-line.svg);
+  mask-image: url(../vendor/dsfr/icons/arrows/arrow-right-line.svg);
+}
+.fr-icon-building-4-line:before, .fr-icon-building-4-line:after {
+  -webkit-mask-image: url(../vendor/dsfr/icons/buildings/building-4-line.svg);
+  mask-image: url(../vendor/dsfr/icons/buildings/building-4-line.svg);
+}
+.fr-icon-contrast-drop-2-line:before, .fr-icon-contrast-drop-2-line:after {
+  -webkit-mask-image: url(../vendor/dsfr/icons/design/contrast-drop-2-line.svg);
+  mask-image: url(../vendor/dsfr/icons/design/contrast-drop-2-line.svg);
+}
+.fr-icon-chat-quote-line:before, .fr-icon-chat-quote-line:after {
+  -webkit-mask-image: url(../vendor/dsfr/icons/communication/chat-quote-line.svg);
+  mask-image: url(../vendor/dsfr/icons/communication/chat-quote-line.svg);
+}
+.fr-icon-external-link-line:before, .fr-icon-external-link-line:after {
+  -webkit-mask-image: url(../vendor/dsfr/icons/system/external-link-line.svg);
+  mask-image: url(../vendor/dsfr/icons/system/external-link-line.svg);
+}
+.fr-icon-hexagon-line:before, .fr-icon-hexagon-line:after {
+  -webkit-mask-image: url(../vendor/dsfr/icons/design/hexagon-line.svg);
+  mask-image: url(../vendor/dsfr/icons/design/hexagon-line.svg);
+}
+.fr-icon-line-chart-line:before, .fr-icon-line-chart-line:after {
+  -webkit-mask-image: url(../vendor/dsfr/icons/business/line-chart-line.svg);
+  mask-image: url(../vendor/dsfr/icons/business/line-chart-line.svg);
+}
+.fr-icon-seedling-line:before, .fr-icon-seedling-line:after {
+  -webkit-mask-image: url(../vendor/dsfr/icons/others/seedling-line.svg);
+  mask-image: url(../vendor/dsfr/icons/others/seedling-line.svg);
+}
+
+.bdf-section {
+  padding: 5rem 7.5rem;
+}
+
+@media (max-width: 62em) {
+  .bdf-section {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 36em) {
+  .bdf-section {
+    padding: 2rem 1rem;
+  }
+}
+
+/* ---------- Hero ---------- */
+.bdf-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3.75rem;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.bdf-hero__vector {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1234px;
+  max-width: 130%;
+  transform: translateX(-50%) scaleY(-1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bdf-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3.75rem;
+}
+
+.bdf-hero__title {
+  color: var(--bdf-title-grey);
+  max-width: 75rem;
+}
+
+.bdf-highlight {
+  background-color: #ffeb00;
+  border-radius: 2rem;
+  padding: 0 0.5rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.bdf-hero__lead-wrap {
+  position: relative;
+  max-width: 43rem;
+}
+
+.bdf-hero__lead {
+  position: relative;
+  z-index: 1;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  color: #000;
+  margin: 0;
+}
+
+.bdf-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ---------- Presentation ---------- */
+.bdf-presentation {
+  background-color: var(--bdf-bg-alt-blue);
+  box-shadow: 0 2px 3px rgba(0, 0, 18, 0.16);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5rem;
+}
+
+.bdf-presentation__title {
+  color: var(--bdf-blue-france);
+  flex: 1 1 28rem;
+  max-width: 29rem;
+  margin: 0;
+}
+
+.bdf-presentation__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1 1 38rem;
+}
+
+.bdf-presentation__card {
+  background: #fff;
+  border: 1px solid var(--bdf-border-grey);
+  padding: 2rem;
+}
+
+.bdf-presentation__card h3 {
+  color: var(--bdf-blue-france);
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+  margin: 0 0 0.75rem;
+}
+
+.bdf-presentation__card p {
+  color: var(--bdf-mention-grey);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+/* ---------- Packs thématiques ---------- */
+.bdf-packs__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.75rem;
+  margin-bottom: 5rem;
+}
+
+.bdf-packs__title-col {
+  flex: 1 1 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  justify-content: flex-end;
+  max-width: 33.75rem;
+}
+
+.bdf-packs__title-col h2 {
+  color: var(--bdf-blue-france);
+  margin: 0;
+}
+
+.bdf-packs__description {
+  flex: 1 1 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  max-width: 37.5rem;
+}
+
+.bdf-packs__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  box-shadow: 0 2px 3px rgba(0, 0, 18, 0.16);
+}
+
+@media (max-width: 62em) {
+  .bdf-packs__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 36em) {
+  .bdf-packs__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bdf-pack-card {
+  background: var(--bdf-bg-alt-blue);
+  border: 1px solid var(--bdf-border-grey);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 22.25rem;
+}
+
+.bdf-pack-card--lead {
+  background: var(--bdf-blue-france);
+  color: #fff;
+}
+
+.bdf-pack-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bdf-pack-card__tag {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  color: var(--bdf-blue-france);
+  margin: 0;
+}
+
+.bdf-pack-card--lead .bdf-pack-card__tag {
+  color: var(--bdf-text-inverted-blue);
+}
+
+.bdf-pack-card__badge {
+  position: relative;
+  width: 2.58rem;
+  height: 2.58rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bdf-pack-card__badge svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bdf-pack-card__badge .bdf-pack-card__icon {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  z-index: 1;
+}
+
+.bdf-icon-subway,
+.bdf-icon-footprint {
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.bdf-icon-subway {
+  -webkit-mask-image: url(../assets/icons/subway-line.svg);
+  mask-image: url(../assets/icons/subway-line.svg);
+}
+
+.bdf-icon-footprint {
+  -webkit-mask-image: url(../assets/icons/footprint-line.svg);
+  mask-image: url(../assets/icons/footprint-line.svg);
+}
+
+.bdf-pack-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.bdf-pack-card__body h3 {
+  color: var(--bdf-blue-france);
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+.bdf-pack-card--lead .bdf-pack-card__body h3 {
+  color: #fff;
+}
+
+.bdf-pack-card__body p {
+  color: var(--bdf-text-grey);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.bdf-pack-card--lead .bdf-pack-card__body p {
+  color: var(--bdf-text-inverted-blue);
+}
+
+.bdf-pack-card__action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.bdf-pack-card__action .fr-icon-arrow-right-line::before {
+  --icon-size: 1.5rem;
+}
+
+.bdf-pack-card--lead .bdf-pack-card__action .fr-icon-arrow-right-line::before {
+  background-color: var(--bdf-text-inverted-blue);
+}
+
+/* pack accent colours (badge dots + icon) */
+.bdf-pack-card--grey .bdf-pack-card__badge { color: var(--bdf-grey-icon); }
+.bdf-pack-card--orange .bdf-pack-card__badge { color: var(--bdf-orange); }
+.bdf-pack-card--blue .bdf-pack-card__badge { color: var(--bdf-blue-france); }
+.bdf-pack-card--green .bdf-pack-card__badge { color: var(--bdf-green); }
+.bdf-pack-card--red .bdf-pack-card__badge { color: var(--bdf-red); }
+.bdf-pack-card--yellow .bdf-pack-card__badge { color: var(--bdf-yellow); }
+.bdf-pack-card--pink .bdf-pack-card__badge { color: var(--bdf-pink); }
+
+.bdf-pack-card__badge .bdf-pack-card__dots {
+  position: absolute;
+  inset: 0;
+}
+
+.bdf-pack-card__badge .bdf-pack-card__dots span {
+  position: absolute;
+  left: 0;
+  width: 0.232rem;
+  height: 0.232rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.bdf-pack-card__badge .bdf-pack-card__dots span:nth-child(1) { top: 0.8rem; }
+.bdf-pack-card__badge .bdf-pack-card__dots span:nth-child(2) { top: 0.44rem; }
+.bdf-pack-card__badge .bdf-pack-card__dots span:nth-child(3) { top: 1.16rem; }
+.bdf-pack-card__badge .bdf-pack-card__dots span:nth-child(4) { top: 1.52rem; }
+.bdf-pack-card__badge .bdf-pack-card__dots span:nth-child(5) { top: 1.88rem; }
+
+.bdf-pack-card__hexagon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+/* ---------- Users ---------- */
+.bdf-users {
+  background-color: var(--bdf-bg-hover-blue);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5rem;
+}
+
+.bdf-users__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1 1 40rem;
+  max-width: 46rem;
+}
+
+.bdf-users__row {
+  display: flex;
+  background: #fff;
+  flex-wrap: wrap;
+}
+
+.bdf-users__label {
+  background: var(--bdf-bg-alt-blue);
+  padding: 2rem;
+  width: 17.5rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.bdf-users__label h3 {
+  color: var(--bdf-blue-france);
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+.bdf-users__label p {
+  color: var(--bdf-mention-grey);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+.bdf-users__quote {
+  flex: 1 1 16rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bdf-users__quote .fr-icon-double-quote-line {
+  color: var(--bdf-blue-france);
+}
+
+.bdf-users__quote p {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  color: var(--bdf-title-grey);
+  font-weight: 700;
+  margin: 0;
+}
+
+.bdf-users__title {
+  flex: 1 1 20rem;
+  color: var(--bdf-blue-france);
+  margin: 0;
+}
+
+/* ---------- Contributors ---------- */
+.bdf-contributors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.75rem;
+  text-align: center;
+}
+
+.bdf-contributors__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 50rem;
+}
+
+.bdf-contributors__intro h2 {
+  color: var(--bdf-blue-france);
+  margin: 0;
+}
+
+.bdf-contributors__intro p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+.bdf-contributors__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5.25rem;
+  flex-wrap: wrap;
+}
+
+.bdf-contributors__logos img {
+  max-height: 9.375rem;
+  width: auto;
+}
+
+/* ---------- Label ---------- */
+.bdf-label {
+  background-color: var(--bdf-bg-alt-grey);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.bdf-label__title {
+  color: var(--bdf-blue-france);
+  flex: 1 1 30rem;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.bdf-label__cta {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.bdf-label__vector-underline {
+  position: absolute;
+  left: 6rem;
+  top: 4.5rem;
+  width: 45rem;
+  max-width: 60%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bdf-label__vector-swoosh {
+  position: absolute;
+  left: 5.5rem;
+  top: 10.5rem;
+  width: 9rem;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- Devenir contributeur ---------- */
+.bdf-devenir__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3.75rem;
+  max-width: 55rem;
+}
+
+.bdf-devenir__intro h2 {
+  margin: 0;
+}
+
+.bdf-devenir__intro p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+.bdf-devenir__cards {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.bdf-devenir__card {
+  background: #fff;
+  border: 1px solid var(--bdf-border-grey);
+  padding: 2rem;
+  flex: 1 1 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bdf-devenir__card .bdf-pack-card__tag {
+  color: var(--bdf-blue-france);
+}
+
+.bdf-devenir__card h3 {
+  color: var(--bdf-blue-france);
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+  margin: 0 0 0.75rem;
+}
+
+.bdf-devenir__card p {
+  color: var(--bdf-text-grey);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+.bdf-devenir__card .bdf-pack-card__action {
+  margin-top: auto;
+}
+
+/* ---------- Dernieres avancees ---------- */
+.bdf-avancees {
+  background-color: var(--bdf-bg-contrast-info);
+}
+
+.bdf-avancees__title {
+  color: var(--bdf-blue-france);
+  margin: 0 0 3.75rem;
+}
+
+.bdf-avancees__layout {
+  display: flex;
+  gap: 3.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.bdf-avancees__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  flex: 2 1 30rem;
+}
+
+.bdf-avancees__card {
+  background: #fff;
+  border: 1px solid var(--bdf-border-grey);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bdf-avancees__card h3 {
+  color: var(--bdf-blue-france);
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+  margin: 0;
+}
+
+.bdf-avancees__card p {
+  color: var(--bdf-text-grey);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.bdf-avancees__card-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bdf-avancees__side {
+  flex: 1 1 16rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.75rem;
+  align-items: center;
+  text-align: center;
+}
+
+.bdf-avancees__side p {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  color: var(--bdf-text-grey);
+  margin: 0;
+}
+
+.bdf-avancees__side p strong {
+  font-weight: 700;
+}
+
+.bdf-avancees__side .fr-btns-group {
+  width: 100%;
+}
+
+/* ---------- Join us ---------- */
+.bdf-join-us {
+  background-color: var(--bdf-blue-france);
+  color: #fff;
+}
+
+.bdf-join-us__title {
+  color: #fff;
+  text-align: center;
+  margin: 0 0 2.5rem;
+}
+
+.bdf-join-us__actions {
+  display: flex;
+  gap: 3.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 7.5rem;
+}
+
+@media (max-width: 62em) {
+  .bdf-join-us__actions {
+    padding: 0;
+  }
+}
+
+.bdf-join-us__actions .fr-btn {
+  flex: 1 1 20rem;
+  justify-content: center;
+  background-color: var(--bdf-blue-france);
+  border: 1px solid #e5e5e5;
+}
+
+.bdf-join-us__actions .fr-btn:hover {
+  background-color: #23238f;
+}
+
+/* ---------- Footer partners ---------- */
+.bdf-footer__partners-logo {
+  width: 10rem;
+  height: 5.625rem;
+  background: var(--bdf-bg-alt-grey);
+  border: 1px dashed var(--bdf-border-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bdf-mention-grey);
+  font-size: 0.75rem;
+  text-align: center;
+}
